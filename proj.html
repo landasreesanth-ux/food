@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>FoodHub</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#fff7f0;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    width:100%;
+    background:#ff6b6b;
+    padding:20px 10%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:32px;
+    color:white;
+    font-weight:bold;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:18px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#ffe66d;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:50px 10%;
+    gap:40px;
+}
+
+.hero-text{
+    width:50%;
+}
+
+.hero-text h1{
+    font-size:60px;
+    color:#ff6b6b;
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    font-size:18px;
+    line-height:30px;
+    color:#444;
+    margin-bottom:25px;
+}
+
+.hero-text button{
+    padding:14px 28px;
+    border:none;
+    background:#4ecdc4;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:17px;
+}
+
+.hero-image{
+    width:45%;
+}
+
+.hero-image img{
+    width:100%;
+    border-radius:20px;
+}
+
+/* ================= RECIPES ================= */
+
+.recipes{
+    padding:80px 10%;
+}
+
+.title{
+    text-align:center;
+    font-size:45px;
+    color:#ff6b6b;
+    margin-bottom:50px;
+}
+
+.recipe-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.recipe-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.recipe-card:hover{
+    transform:translateY(-10px);
+}
+
+.recipe-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.recipe-content{
+    padding:20px;
+}
+
+.recipe-content h3{
+    color:#ff6b6b;
+    margin-bottom:15px;
+}
+
+.recipe-content p{
+    line-height:25px;
+    color:#555;
+    margin-bottom:20px;
+}
+
+.recipe-content button{
+    padding:10px 20px;
+    border:none;
+    background:#4ecdc4;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    padding:80px 10%;
+    background:#fff0ea;
+    text-align:center;
+}
+
+.about h2{
+    font-size:42px;
+    color:#ff6b6b;
+    margin-bottom:25px;
+}
+
+.about p{
+    max-width:900px;
+    margin:auto;
+    line-height:30px;
+    font-size:18px;
+    color:#444;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+    padding:80px 10%;
+    text-align:center;
+}
+
+.contact h2{
+    font-size:42px;
+    color:#ff6b6b;
+    margin-bottom:20px;
+}
+
+.contact p{
+    font-size:20px;
+    margin-bottom:15px;
+    color:#444;
+}
+
+.contact button{
+    padding:12px 25px;
+    border:none;
+    background:#4ecdc4;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+/* ================= POPUP ================= */
+
+.popup{
+    width:100%;
+    height:100vh;
+    background:rgba(0,0,0,0.6);
+    position:fixed;
+    top:0;
+    left:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+.popup-content{
+    width:80%;
+    max-width:500px;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    position:relative;
+    overflow-y:auto;
+    max-height:90vh;
+}
+
+.popup-content img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.popup-content h1{
+    color:#ff6b6b;
+    margin-bottom:20px;
+}
+
+.popup-content h2{
+    margin-bottom:15px;
+}
+
+.popup-content ul{
+    margin-left:20px;
+    margin-bottom:20px;
+}
+
+.popup-content li{
+    margin-bottom:10px;
+}
+
+.popup-content p{
+    line-height:28px;
+    color:#444;
+}
+
+.close-btn{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:30px;
+    cursor:pointer;
+    color:red;
+}
+
+.back-btn{
+    padding:10px 20px;
+    border:none;
+    background:#ff6b6b;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+    margin-bottom:20px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#ff6b6b;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-text,
+    .hero-image{
+        width:100%;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .hero-text h1{
+        font-size:45px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        FoodHub
+    </div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#recipes">Recipes</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>Delicious Food Recipes</h1>
+
+        <p>
+            Explore tasty dishes and amazing recipes
+            with beautiful food collections from around the world.
+        </p>
+
+        <button onclick="welcomeMsg()">
+            Explore
+        </button>
+
+    </div>
+
+    <div class="hero-image">
+
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop">
+
+    </div>
+
+</section>
+
+<!-- RECIPES -->
+
+<section class="recipes" id="recipes">
+
+    <h2 class="title">
+        Popular Recipes
+    </h2>
+
+    <div class="recipe-container">
+
+        <!-- PIZZA -->
+
+        <div class="recipe-card">
+
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="recipe-content">
+
+                <h3>Italian Pizza</h3>
+
+                <p>
+                    Crispy pizza with cheese,
+                    vegetables and delicious toppings.
+                </p>
+
+                <button onclick="showRecipe('pizza')">
+                    View Recipe
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- SALAD -->
+
+        <div class="recipe-card">
+
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="recipe-content">
+
+                <h3>Healthy Salad</h3>
+
+                <p>
+                    Fresh healthy salad packed
+                    with vegetables and nutrients.
+                </p>
+
+                <button onclick="showRecipe('salad')">
+                    View Recipe
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- BURGER -->
+
+        <div class="recipe-card">
+
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="recipe-content">
+
+                <h3>Burger Combo</h3>
+
+                <p>
+                    Juicy burger with crispy fries
+                    and refreshing drinks.
+                </p>
+
+                <button onclick="showRecipe('burger')">
+                    View Recipe
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <h2>About Us</h2>
+
+    <p>
+        FoodHub is a modern recipe platform designed
+        for food lovers. We share tasty recipes,
+        healthy meals and delicious cooking ideas
+        with beautiful food inspiration.
+    </p>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <h2>Contact Us</h2>
+
+    <p>Email: foodhub@gmail.com</p>
+
+    <p>Phone: +91 9876543210</p>
+
+    <button onclick="contactMsg()">
+        Contact Now
+    </button>
+
+</section>
+
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+
+    <div class="popup-content">
+
+        <span class="close-btn"
+        onclick="closePopup()">
+        &times;
+        </span>
+
+        <button class="back-btn"
+        onclick="closePopup()">
+        ← Back
+        </button>
+
+        <img id="recipeImage">
+
+        <h1 id="recipeTitle"></h1>
+
+        <h2>Ingredients</h2>
+
+        <ul id="ingredients"></ul>
+
+        <h2>Preparation</h2>
+
+        <p id="preparation"></p>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 FoodHub | All Rights Reserved
+    </p>
+
+</footer>
+
+<script>
+
+function welcomeMsg(){
+
+    alert("Welcome to FoodHub!");
+
+}
+
+function contactMsg(){
+
+    alert("Thanks for contacting FoodHub!");
+
+}
+
+function showRecipe(recipe){
+
+    const popup =
+    document.getElementById("popup");
+
+    const title =
+    document.getElementById("recipeTitle");
+
+    const image =
+    document.getElementById("recipeImage");
+
+    const ingredients =
+    document.getElementById("ingredients");
+
+    const preparation =
+    document.getElementById("preparation");
+
+    popup.style.display = "flex";
+
+    if(recipe === "pizza"){
+
+        title.innerHTML = "Italian Pizza";
+
+        image.src =
+        "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1200&auto=format&fit=crop";
+
+        ingredients.innerHTML = `
+        <li>Pizza Base</li>
+        <li>Cheese</li>
+        <li>Tomato Sauce</li>
+        <li>Vegetables</li>
+        `;
+
+        preparation.innerHTML =
+        "Spread sauce on pizza base, add vegetables and cheese, then bake for 15 minutes.";
+
+    }
+
+    else if(recipe === "salad"){
+
+        title.innerHTML = "Healthy Salad";
+
+        image.src =
+        "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1200&auto=format&fit=crop";
+
+        ingredients.innerHTML = `
+        <li>Lettuce</li>
+        <li>Tomatoes</li>
+        <li>Cucumber</li>
+        <li>Olive Oil</li>
+        `;
+
+        preparation.innerHTML =
+        "Mix all vegetables together, add olive oil and dressing, then serve fresh.";
+
+    }
+
+    else if(recipe === "burger"){
+
+        title.innerHTML = "Burger Combo";
+
+        image.src =
+        "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1200&auto=format&fit=crop";
+
+        ingredients.innerHTML = `
+        <li>Burger Bun</li>
+        <li>Patty</li>
+        <li>Cheese Slice</li>
+        <li>French Fries</li>
+        `;
+
+        preparation.innerHTML =
+        "Cook the patty, place inside bun with cheese and vegetables, serve with fries.";
+
+    }
+
+}
+
+function closePopup(){
+
+    document.getElementById("popup")
+    .style.display = "none";
+
+}
+
+</script>
+
+</body>
+</html>
